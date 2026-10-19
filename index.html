@@ -60,7 +60,8 @@
       letter-spacing: -.5px;
     }
 
-    .logo span { color: var(--accent); }
+    .logo-rf { color: #000; }
+    .logo-vdopuske { color: var(--accent); }
 
     .nav-links {
       display: flex;
@@ -80,7 +81,7 @@
       border: 0;
       border-radius: 8px;
       background: var(--accent);
-      color: #ffffff;
+      color: #fff;
       font-weight: 700;
       cursor: pointer;
       transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
@@ -210,12 +211,12 @@
 
     .card {
       position: relative;
-      padding: 26px;
       min-height: 260px;
+      padding: 26px;
       overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 14px;
-      background: linear-gradient(145deg, #ffffff, #edf6fb);
+      background: linear-gradient(145deg, #fff, #edf6fb);
       transform-style: preserve-3d;
       transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
       animation: card-in .7s both;
@@ -300,7 +301,7 @@
       padding: 34px;
       border: 1px solid #d5e6f1;
       border-radius: 16px;
-      background: linear-gradient(135deg, #ffffff, #eaf5fb);
+      background: linear-gradient(135deg, #fff, #eaf5fb);
       box-shadow: 0 20px 55px rgba(42, 94, 128, .1);
       transition: transform .35s ease, box-shadow .35s ease;
     }
@@ -408,7 +409,9 @@
 <body>
   <header>
     <nav class="wrap">
-      <a class="logo" href="#">RFV<span>dopuske</span></a>
+      <a class="logo" href="#">
+        <span class="logo-rf">RF</span><span class="logo-vdopuske">Vdopuske</span>
+      </a>
 
       <div class="nav-links">
         <a href="#services">Услуги</a>
