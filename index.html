@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="RFVdopuske — 3D-печать, 3D-моделирование и 3D-сканирование.">
+  <title>RFVdopuske — 3D-технологии</title>
+
+  <style>
+    :root {
+      --bg: #f2f8fc;
+      --text: #17324a;
+      --muted: #5f7890;
+      --accent: #168bd2;
+      --line: #d5e6f1;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.6 Arial, sans-serif;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: rgba(242, 248, 252, .92);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -.5px;
+    }
+
+    .logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a { transition: color .2s ease; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 13px 20px;
+      border: 0;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #ffffff;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      background: #36a6e5;
+      box-shadow: 0 10px 28px rgba(22, 139, 210, .2);
+    }
+
+    .button-outline {
+      color: var(--text);
+      background: transparent;
+      border: 1px solid #b7d1e2;
+    }
+
+    .button-outline:hover {
+      background: #e7f3fa;
+      box-shadow: 0 10px 28px rgba(42, 94, 128, .1);
+    }
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      padding: 100px 0 90px;
+      perspective: 1000px;
+    }
+
+    .hero::before,
+    .hero::after {
+      position: absolute;
+      z-index: -1;
+      content: "";
+      pointer-events: none;
+      border-radius: 50%;
+      filter: blur(2px);
+    }
+
+    .hero::before {
+      width: 280px;
+      height: 280px;
+      top: 45px;
+      right: 4%;
+      border: 1px solid rgba(22, 139, 210, .22);
+      box-shadow:
+        inset 0 0 50px rgba(22, 139, 210, .06),
+        0 0 70px rgba(22, 139, 210, .08);
+      animation: orbit 12s linear infinite;
+    }
+
+    .hero::after {
+      width: 180px;
+      height: 180px;
+      top: 95px;
+      right: calc(4% + 50px);
+      background: radial-gradient(circle at 35% 30%, #d8f2ff, #78c8f2 38%, #318fc5 75%, #1a5d87);
+      box-shadow: 20px 25px 55px rgba(35, 91, 128, .2);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 16px 0;
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1.02;
+      animation: rise-in .8s both;
+    }
+
+    .hero p {
+      max-width: 610px;
+      color: var(--muted);
+      font-size: 19px;
+      animation: rise-in .8s .12s both;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+      animation: rise-in .8s .24s both;
+    }
+
+    .hero-note {
+      margin-top: 48px;
+      color: #71899d;
+      font-size: 13px;
+      animation: rise-in .8s .36s both;
+    }
+
+    section {
+      padding: 76px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin-bottom: 32px;
+    }
+
+    h2 {
+      margin: 8px 0 12px;
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.15;
+    }
+
+    .section-heading p,
+    .card p {
+      color: var(--muted);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      perspective: 1000px;
+    }
+
+    .card {
+      position: relative;
+      padding: 26px;
+      min-height: 260px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: linear-gradient(145deg, #ffffff, #edf6fb);
+      transform-style: preserve-3d;
+      transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+      animation: card-in .7s both;
+    }
+
+    .card:nth-child(2) { animation-delay: .12s; }
+    .card:nth-child(3) { animation-delay: .24s; }
+
+    .card::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      pointer-events: none;
+      opacity: 0;
+      background: radial-gradient(circle at 50% 0, rgba(22, 139, 210, .12), transparent 65%);
+      transition: opacity .35s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) rotateX(3deg) rotateY(-3deg);
+      border-color: rgba(22, 139, 210, .4);
+      box-shadow: 0 22px 45px rgba(42, 94, 128, .12);
+    }
+
+    .card:hover::before { opacity: 1; }
+
+    .icon {
+      display: inline-block;
+      font-size: 30px;
+      transform: translateZ(25px);
+      transition: transform .35s ease;
+    }
+
+    .card:hover .icon {
+      transform: translateZ(40px) rotate(-8deg) scale(1.12);
+    }
+
+    .card h3 {
+      margin: 18px 0 8px;
+      font-size: 22px;
+      transform: translateZ(15px);
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--accent);
+      font-weight: 700;
+      transition: transform .2s ease;
+    }
+
+    .card a:hover { transform: translateX(5px); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      perspective: 800px;
+    }
+
+    .step {
+      padding: 20px 0;
+      border-top: 1px solid #c8dce9;
+      transition: transform .3s ease;
+    }
+
+    .step:hover { transform: translateY(-5px); }
+
+    .step b {
+      color: var(--accent);
+      font-size: 14px;
+    }
+
+    .step h3 { margin: 8px 0; }
+    .step p { color: var(--muted); }
+
+    .contact-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 34px;
+      border: 1px solid #d5e6f1;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #ffffff, #eaf5fb);
+      box-shadow: 0 20px 55px rgba(42, 94, 128, .1);
+      transition: transform .35s ease, box-shadow .35s ease;
+    }
+
+    .contact-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 28px 65px rgba(42, 94, 128, .16);
+    }
+
+    .contact-box p {
+      max-width: 560px;
+      color: var(--muted);
+    }
+
+    .contact-details {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .contact-details a {
+      color: var(--accent);
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-details a:hover { text-decoration: underline; }
+
+    footer {
+      padding: 26px 0;
+      color: #71899d;
+      font-size: 13px;
+    }
+
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-18px) rotate(8deg); }
+    }
+
+    @keyframes orbit {
+      from { transform: rotate(0deg) scale(1); }
+      to { transform: rotate(360deg) scale(1); }
+    }
+
+    @keyframes rise-in {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes card-in {
+      from { opacity: 0; transform: translateY(20px) rotateX(8deg); }
+      to { opacity: 1; transform: translateY(0) rotateX(0); }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .hero { padding: 72px 0; }
+
+      .hero::before {
+        width: 190px;
+        height: 190px;
+        top: 30px;
+        right: -35px;
+      }
+
+      .hero::after {
+        width: 120px;
+        height: 120px;
+        top: 65px;
+        right: 0;
+      }
+
+      .cards,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-box {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      footer .wrap { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="wrap">
+      <a class="logo" href="#">RFV<span>dopuske</span></a>
+
+      <div class="nav-links">
+        <a href="#services">Услуги</a>
+        <a href="#process">Как работаем</a>
+        <a href="#contacts">Контакты</a>
+      </div>
+
+      <a class="button" href="#contacts">Консультация</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="wrap hero">
+      <div class="eyebrow">3D-технологии для ваших идей</div>
+      <h1>От цифровой модели — к реальному объекту.</h1>
+      <p>Помогаем создавать детали и изделия: проектируем 3D-модели, сканируем существующие объекты и печатаем готовые решения.</p>
+
+      <div class="actions">
+        <a class="button" href="#contacts">Обсудить проект</a>
+        <a class="button button-outline" href="#services">Наши услуги</a>
+      </div>
+
+      <div class="hero-note">RFVdopuske · 3D-печать · 3D-моделирование · 3D-сканирование</div>
+    </div>
+
+    <section id="services">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="eyebrow">Наши услуги</div>
+          <h2>Воплощаем идеи в точных деталях</h2>
+          <p>Подберём подходящий процесс под вашу задачу — от цифрового проектирования до готового изделия.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="icon">🖨️</div>
+            <h3>3D-печать</h3>
+            <p>Изготовление прототипов, деталей и небольших серий. Поможем выбрать материал и технологию под условия эксплуатации.</p>
+            <a href="#contacts">Заказать печать →</a>
+          </article>
+
+          <article class="card">
+            <div class="icon">🧩</div>
+            <h3>3D-моделирование</h3>
+            <p>Создание модели по чертежу, эскизу, образцу или описанию. Подготовим файл для производства и дальнейших изменений.</p>
+            <a href="#contacts">Обсудить модель →</a>
+          </article>
+
+          <article class="card">
+            <div class="icon">📐</div>
+            <h3>3D-сканирование</h3>
+            <p>Оцифровка физических объектов для контроля геометрии, обратного проектирования или создания цифровой копии.</p>
+            <a href="#contacts">Запросить сканирование →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="eyebrow">Просто и прозрачно</div>
+          <h2>Как мы работаем</h2>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <b>01 / Заявка</b>
+            <h3>Расскажите о задаче</h3>
+            <p>Пришлите описание, чертёж, фото или файл — подскажем, что потребуется.</p>
+          </div>
+
+          <div class="step">
+            <b>02 / Расчёт</b>
+            <h3>Согласуем решение</h3>
+            <p>Обсудим технологию, сроки и стоимость до начала работ.</p>
+          </div>
+
+          <div class="step">
+            <b>03 / Результат</b>
+            <h3>Изготовим и передадим</h3>
+            <p>Выполним заказ и согласуем удобный способ получения.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts">
+      <div class="wrap contact-box">
+        <div>
+          <div class="eyebrow">Связаться с нами</div>
+          <h2>Нужна консультация?</h2>
+          <p>Расскажите о своей задаче — поможем сориентироваться по услуге и подготовить расчёт.</p>
+
+          <div class="contact-details">
+            <a href="mailto:ivan-goncharov-00@mail.ru">Почта: ivan-goncharov-00@mail.ru</a>
+            <a href="https://t.me/reiterfost" target="_blank" rel="noopener noreferrer">
+              Telegram: @reiterfost
+            </a>
+          </div>
+        </div>
+
+        <a class="button" href="https://t.me/reiterfost" target="_blank" rel="noopener noreferrer">
+          Написать в Telegram
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 RFVdopuske</span>
+      <span>3D-печать · 3D-моделирование · 3D-сканирование</span>
+    </div>
+  </footer>
+</body>
+</html>
