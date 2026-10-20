@@ -134,7 +134,6 @@
       perspective: 1000px;
     }
 
-    /* Декоративное кольцо вокруг видео */
     .hero::before {
       position: absolute;
       z-index: -1;
@@ -458,18 +457,10 @@
         padding: 72px 0;
       }
 
+      /* Скрываем видео и кольцо, чтобы они не перекрывали текст */
+      .hero-video,
       .hero::before {
-        top: 30px;
-        right: -35px;
-        width: 190px;
-        height: 190px;
-      }
-
-      .hero-video {
-        top: 65px;
-        right: 0;
-        width: 120px;
-        height: 120px;
+        display: none;
       }
 
       .cards,
