@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="RFVdopuske — 3D-печать, 3D-моделирование и 3D-сканирование.">
+
+  <meta
+    name="description"
+    content="RFVdopuske — 3D-печать, 3D-моделирование и 3D-сканирование."
+  >
+
   <title>RFVdopuske — 3D-технологии</title>
 
   <style>
@@ -15,7 +20,9 @@
       --line: #d5e6f1;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     html {
       scroll-behavior: smooth;
@@ -30,18 +37,21 @@
       font: 16px/1.6 Arial, sans-serif;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     .wrap {
       width: min(1120px, 90%);
-      margin: auto;
+      margin: 0 auto;
     }
 
     header {
       position: sticky;
       top: 0;
       z-index: 5;
-      background: rgba(242, 248, 252, .92);
+      background: rgba(242, 248, 252, 0.92);
       border-bottom: 1px solid var(--line);
       backdrop-filter: blur(12px);
     }
@@ -55,13 +65,18 @@
     }
 
     .logo {
-      font-weight: 800;
       font-size: 22px;
-      letter-spacing: -.5px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
     }
 
-    .logo-rf { color: #000; }
-    .logo-vdopuske { color: var(--accent); }
+    .logo-rf {
+      color: #000;
+    }
+
+    .logo-vdopuske {
+      color: var(--accent);
+    }
 
     .nav-links {
       display: flex;
@@ -70,13 +85,18 @@
       font-size: 14px;
     }
 
-    .nav-links a { transition: color .2s ease; }
-    .nav-links a:hover { color: var(--accent); }
+    .nav-links a {
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
 
     .button {
       display: inline-flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       padding: 13px 20px;
       border: 0;
       border-radius: 8px;
@@ -84,24 +104,27 @@
       color: #fff;
       font-weight: 700;
       cursor: pointer;
-      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
     }
 
     .button:hover {
       transform: translateY(-3px);
       background: #36a6e5;
-      box-shadow: 0 10px 28px rgba(22, 139, 210, .2);
+      box-shadow: 0 10px 28px rgba(22, 139, 210, 0.2);
     }
 
     .button-outline {
-      color: var(--text);
-      background: transparent;
       border: 1px solid #b7d1e2;
+      background: transparent;
+      color: var(--text);
     }
 
     .button-outline:hover {
       background: #e7f3fa;
-      box-shadow: 0 10px 28px rgba(42, 94, 128, .1);
+      box-shadow: 0 10px 28px rgba(42, 94, 128, 0.1);
     }
 
     .hero {
@@ -111,35 +134,37 @@
       perspective: 1000px;
     }
 
-    .hero::before,
-    .hero::after {
+    /* Декоративное кольцо вокруг изображения */
+    .hero::before {
       position: absolute;
       z-index: -1;
-      content: "";
-      pointer-events: none;
-      border-radius: 50%;
-      filter: blur(2px);
-    }
-
-    .hero::before {
-      width: 280px;
-      height: 280px;
       top: 45px;
       right: 4%;
-      border: 1px solid rgba(22, 139, 210, .22);
+      width: 280px;
+      height: 280px;
+      content: "";
+      pointer-events: none;
+      border: 1px solid rgba(22, 139, 210, 0.22);
+      border-radius: 50%;
       box-shadow:
-        inset 0 0 50px rgba(22, 139, 210, .06),
-        0 0 70px rgba(22, 139, 210, .08);
+        inset 0 0 50px rgba(22, 139, 210, 0.06),
+        0 0 70px rgba(22, 139, 210, 0.08);
       animation: orbit 12s linear infinite;
     }
 
+    /* Вместо шара используется изображение images/hero-image.png */
     .hero::after {
-      width: 180px;
-      height: 180px;
-      top: 95px;
-      right: calc(4% + 50px);
-      background: radial-gradient(circle at 35% 30%, #d8f2ff, #78c8f2 38%, #318fc5 75%, #1a5d87);
-      box-shadow: 20px 25px 55px rgba(35, 91, 128, .2);
+      position: absolute;
+      z-index: -1;
+      top: 70px;
+      right: 4%;
+      width: 280px;
+      height: 280px;
+      content: "";
+      pointer-events: none;
+      border-radius: 50%;
+      background: url("images/hero-image.png") center / cover no-repeat;
+      box-shadow: 20px 25px 55px rgba(35, 91, 128, 0.2);
       animation: float 5s ease-in-out infinite;
     }
 
@@ -156,14 +181,14 @@
       margin: 16px 0;
       font-size: clamp(42px, 7vw, 76px);
       line-height: 1.02;
-      animation: rise-in .8s both;
+      animation: rise-in 0.8s both;
     }
 
     .hero p {
       max-width: 610px;
       color: var(--muted);
       font-size: 19px;
-      animation: rise-in .8s .12s both;
+      animation: rise-in 0.8s 0.12s both;
     }
 
     .actions {
@@ -171,14 +196,14 @@
       flex-wrap: wrap;
       gap: 12px;
       margin-top: 30px;
-      animation: rise-in .8s .24s both;
+      animation: rise-in 0.8s 0.24s both;
     }
 
     .hero-note {
       margin-top: 48px;
       color: #71899d;
       font-size: 13px;
-      animation: rise-in .8s .36s both;
+      animation: rise-in 0.8s 0.36s both;
     }
 
     section {
@@ -218,12 +243,20 @@
       border-radius: 14px;
       background: linear-gradient(145deg, #fff, #edf6fb);
       transform-style: preserve-3d;
-      transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
-      animation: card-in .7s both;
+      transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+      animation: card-in 0.7s both;
     }
 
-    .card:nth-child(2) { animation-delay: .12s; }
-    .card:nth-child(3) { animation-delay: .24s; }
+    .card:nth-child(2) {
+      animation-delay: 0.12s;
+    }
+
+    .card:nth-child(3) {
+      animation-delay: 0.24s;
+    }
 
     .card::before {
       position: absolute;
@@ -231,23 +264,39 @@
       content: "";
       pointer-events: none;
       opacity: 0;
-      background: radial-gradient(circle at 50% 0, rgba(22, 139, 210, .12), transparent 65%);
-      transition: opacity .35s ease;
+      background: radial-gradient(
+        circle at 50% 0,
+        rgba(22, 139, 210, 0.12),
+        transparent 65%
+      );
+      transition: opacity 0.35s ease;
     }
 
     .card:hover {
       transform: translateY(-8px) rotateX(3deg) rotateY(-3deg);
-      border-color: rgba(22, 139, 210, .4);
-      box-shadow: 0 22px 45px rgba(42, 94, 128, .12);
+      border-color: rgba(22, 139, 210, 0.4);
+      box-shadow: 0 22px 45px rgba(42, 94, 128, 0.12);
     }
 
-    .card:hover::before { opacity: 1; }
+    .card:hover::before {
+      opacity: 1;
+    }
 
     .icon {
-      display: inline-block;
-      font-size: 30px;
+      display: inline-flex;
+      width: 52px;
+      height: 52px;
+      align-items: center;
+      justify-content: center;
       transform: translateZ(25px);
-      transition: transform .35s ease;
+      transition: transform 0.35s ease;
+    }
+
+    .icon img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .card:hover .icon {
@@ -265,10 +314,12 @@
       margin-top: 12px;
       color: var(--accent);
       font-weight: 700;
-      transition: transform .2s ease;
+      transition: transform 0.2s ease;
     }
 
-    .card a:hover { transform: translateX(5px); }
+    .card a:hover {
+      transform: translateX(5px);
+    }
 
     .steps {
       display: grid;
@@ -280,18 +331,25 @@
     .step {
       padding: 20px 0;
       border-top: 1px solid #c8dce9;
-      transition: transform .3s ease;
+      transition: transform 0.3s ease;
     }
 
-    .step:hover { transform: translateY(-5px); }
+    .step:hover {
+      transform: translateY(-5px);
+    }
 
     .step b {
       color: var(--accent);
       font-size: 14px;
     }
 
-    .step h3 { margin: 8px 0; }
-    .step p { color: var(--muted); }
+    .step h3 {
+      margin: 8px 0;
+    }
+
+    .step p {
+      color: var(--muted);
+    }
 
     .contact-box {
       display: flex;
@@ -299,16 +357,18 @@
       justify-content: space-between;
       gap: 30px;
       padding: 34px;
-      border: 1px solid #d5e6f1;
+      border: 1px solid var(--line);
       border-radius: 16px;
       background: linear-gradient(135deg, #fff, #eaf5fb);
-      box-shadow: 0 20px 55px rgba(42, 94, 128, .1);
-      transition: transform .35s ease, box-shadow .35s ease;
+      box-shadow: 0 20px 55px rgba(42, 94, 128, 0.1);
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
     }
 
     .contact-box:hover {
       transform: translateY(-5px);
-      box-shadow: 0 28px 65px rgba(42, 94, 128, .16);
+      box-shadow: 0 28px 65px rgba(42, 94, 128, 0.16);
     }
 
     .contact-box p {
@@ -328,7 +388,9 @@
       overflow-wrap: anywhere;
     }
 
-    .contact-details a:hover { text-decoration: underline; }
+    .contact-details a:hover {
+      text-decoration: underline;
+    }
 
     footer {
       padding: 26px 0;
@@ -343,41 +405,71 @@
     }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-18px) rotate(8deg); }
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-18px) rotate(8deg);
+      }
     }
 
     @keyframes orbit {
-      from { transform: rotate(0deg) scale(1); }
-      to { transform: rotate(360deg) scale(1); }
+      from {
+        transform: rotate(0deg) scale(1);
+      }
+
+      to {
+        transform: rotate(360deg) scale(1);
+      }
     }
 
     @keyframes rise-in {
-      from { opacity: 0; transform: translateY(18px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @keyframes card-in {
-      from { opacity: 0; transform: translateY(20px) rotateX(8deg); }
-      to { opacity: 1; transform: translateY(0) rotateX(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px) rotateX(8deg);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+      }
     }
 
     @media (max-width: 760px) {
-      .nav-links { display: none; }
-      .hero { padding: 72px 0; }
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 72px 0;
+      }
 
       .hero::before {
-        width: 190px;
-        height: 190px;
         top: 30px;
         right: -35px;
+        width: 190px;
+        height: 190px;
       }
 
       .hero::after {
-        width: 120px;
-        height: 120px;
         top: 65px;
         right: 0;
+        width: 120px;
+        height: 120px;
       }
 
       .cards,
@@ -390,7 +482,9 @@
         flex-direction: column;
       }
 
-      footer .wrap { flex-direction: column; }
+      footer .wrap {
+        flex-direction: column;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -398,9 +492,9 @@
       *::before,
       *::after {
         scroll-behavior: auto !important;
-        animation-duration: .01ms !important;
+        animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
@@ -409,7 +503,7 @@
 <body>
   <header>
     <nav class="wrap">
-      <a class="logo" href="#">
+      <a class="logo" href="#" aria-label="RFVdopuske — на главную">
         <span class="logo-rf">RF</span><span class="logo-vdopuske">Vdopuske</span>
       </a>
 
@@ -426,15 +520,22 @@
   <main>
     <div class="wrap hero">
       <div class="eyebrow">3D-технологии для ваших идей</div>
+
       <h1>От цифровой модели — к реальному объекту.</h1>
-      <p>Помогаем создавать детали и изделия: проектируем 3D-модели, сканируем существующие объекты и печатаем готовые решения.</p>
+
+      <p>
+        Помогаем создавать детали и изделия: проектируем 3D-модели,
+        сканируем существующие объекты и печатаем готовые решения.
+      </p>
 
       <div class="actions">
         <a class="button" href="#contacts">Обсудить проект</a>
         <a class="button button-outline" href="#services">Наши услуги</a>
       </div>
 
-      <div class="hero-note">RFVdopuske · 3D-печать · 3D-моделирование · 3D-сканирование</div>
+      <div class="hero-note">
+        RFVdopuske · 3D-печать · 3D-моделирование · 3D-сканирование
+      </div>
     </div>
 
     <section id="services">
@@ -442,28 +543,46 @@
         <div class="section-heading">
           <div class="eyebrow">Наши услуги</div>
           <h2>Воплощаем идеи в точных деталях</h2>
-          <p>Подберём подходящий процесс под вашу задачу — от цифрового проектирования до готового изделия.</p>
+          <p>
+            Подберём подходящий процесс под вашу задачу — от цифрового
+            проектирования до готового изделия.
+          </p>
         </div>
 
         <div class="cards">
           <article class="card">
-            <div class="icon">🖨️</div>
+            <div class="icon" aria-hidden="true">
+              <img src="images/3d-printing.png" alt="">
+            </div>
             <h3>3D-печать</h3>
-            <p>Изготовление прототипов, деталей и небольших серий. Поможем выбрать материал и технологию под условия эксплуатации.</p>
+            <p>
+              Изготовление прототипов, деталей и небольших серий. Поможем
+              выбрать материал и технологию под условия эксплуатации.
+            </p>
             <a href="#contacts">Заказать печать →</a>
           </article>
 
           <article class="card">
-            <div class="icon">🧩</div>
+            <div class="icon" aria-hidden="true">
+              <img src="images/3d-modeling.png" alt="">
+            </div>
             <h3>3D-моделирование</h3>
-            <p>Создание модели по чертежу, эскизу, образцу или описанию. Подготовим файл для производства и дальнейших изменений.</p>
+            <p>
+              Создание модели по чертежу, эскизу, образцу или описанию.
+              Подготовим файл для производства и дальнейших изменений.
+            </p>
             <a href="#contacts">Обсудить модель →</a>
           </article>
 
           <article class="card">
-            <div class="icon">📐</div>
+            <div class="icon" aria-hidden="true">
+              <img src="images/3d-scanning.png" alt="">
+            </div>
             <h3>3D-сканирование</h3>
-            <p>Оцифровка физических объектов для контроля геометрии, обратного проектирования или создания цифровой копии.</p>
+            <p>
+              Оцифровка физических объектов для контроля геометрии,
+              обратного проектирования или создания цифровой копии.
+            </p>
             <a href="#contacts">Запросить сканирование →</a>
           </article>
         </div>
@@ -481,19 +600,26 @@
           <div class="step">
             <b>01 / Заявка</b>
             <h3>Расскажите о задаче</h3>
-            <p>Пришлите описание, чертёж, фото или файл — подскажем, что потребуется.</p>
+            <p>
+              Пришлите описание, чертёж, фото или файл — подскажем,
+              что потребуется.
+            </p>
           </div>
 
           <div class="step">
             <b>02 / Расчёт</b>
             <h3>Согласуем решение</h3>
-            <p>Обсудим технологию, сроки и стоимость до начала работ.</p>
+            <p>
+              Обсудим технологию, сроки и стоимость до начала работ.
+            </p>
           </div>
 
           <div class="step">
             <b>03 / Результат</b>
             <h3>Изготовим и передадим</h3>
-            <p>Выполним заказ и согласуем удобный способ получения.</p>
+            <p>
+              Выполним заказ и согласуем удобный способ получения.
+            </p>
           </div>
         </div>
       </div>
@@ -504,17 +630,32 @@
         <div>
           <div class="eyebrow">Связаться с нами</div>
           <h2>Нужна консультация?</h2>
-          <p>Расскажите о своей задаче — поможем сориентироваться по услуге и подготовить расчёт.</p>
+          <p>
+            Расскажите о своей задаче — поможем сориентироваться по услуге
+            и подготовить расчёт.
+          </p>
 
           <div class="contact-details">
-            <a href="mailto:ivan-goncharov-00@mail.ru">Почта: ivan-goncharov-00@mail.ru</a>
-            <a href="https://t.me/reiterfost" target="_blank" rel="noopener noreferrer">
+            <a href="mailto:rfvdopuske@mail.ru ">
+              Почта: rfvdopuske@mail.ru 
+            </a>
+
+            <a
+              href="https://t.me/reiterfost"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Telegram: @reiterfost
             </a>
           </div>
         </div>
 
-        <a class="button" href="https://t.me/reiterfost" target="_blank" rel="noopener noreferrer">
+        <a
+          class="button"
+          href="https://t.me/reiterfost"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Написать в Telegram
         </a>
       </div>
