@@ -134,7 +134,7 @@
       perspective: 1000px;
     }
 
-    /* Декоративное кольцо вокруг изображения */
+    /* Декоративное кольцо вокруг видео */
     .hero::before {
       position: absolute;
       z-index: -1;
@@ -152,18 +152,18 @@
       animation: orbit 12s linear infinite;
     }
 
-    /* Вместо шара используется изображение images/hero-image.png */
-    .hero::after {
+    .hero-video {
       position: absolute;
       z-index: -1;
       top: 70px;
       right: 4%;
       width: 280px;
       height: 280px;
-      content: "";
+      display: block;
+      object-fit: cover;
+      object-position: center;
       pointer-events: none;
       border-radius: 50%;
-      background: url("images/hero-image.png") center / cover no-repeat;
       box-shadow: 20px 25px 55px rgba(35, 91, 128, 0.2);
       animation: float 5s ease-in-out infinite;
     }
@@ -407,11 +407,11 @@
     @keyframes float {
       0%,
       100% {
-        transform: translateY(0) rotate(0deg);
+        transform: translateY(0) scale(1.15) rotate(0deg);
       }
 
       50% {
-        transform: translateY(-18px) rotate(8deg);
+        transform: translateY(-18px) scale(1.15) rotate(8deg);
       }
     }
 
@@ -465,7 +465,7 @@
         height: 190px;
       }
 
-      .hero::after {
+      .hero-video {
         top: 65px;
         right: 0;
         width: 120px;
@@ -519,6 +519,11 @@
 
   <main>
     <div class="wrap hero">
+      <video class="hero-video" autoplay muted loop playsinline aria-hidden="true">
+        <source src="images/hero-video.mp4" type="video/mp4">
+        Ваш браузер не поддерживает видео.
+      </video>
+
       <div class="eyebrow">3D-технологии для ваших идей</div>
 
       <h1>От цифровой модели — к реальному объекту.</h1>
@@ -636,8 +641,8 @@
           </p>
 
           <div class="contact-details">
-            <a href="mailto:rfvdopuske@mail.ru ">
-              Почта: rfvdopuske@mail.ru 
+            <a href="mailto:ivan-goncharov-00@mail.ru">
+              Почта: ivan-goncharov-00@mail.ru
             </a>
 
             <a
