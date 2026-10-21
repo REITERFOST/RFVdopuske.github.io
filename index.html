@@ -1,14 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta
-    name="description"
-    content="RFVdopuske — 3D-печать, 3D-моделирование и 3D-сканирование."
-  >
-
+  <meta name="description" content="RFVdopuske — 3D-печать, 3D-моделирование и 3D-сканирование.">
   <title>RFVdopuske — 3D-технологии</title>
 
   <style>
@@ -20,9 +15,7 @@
       --line: #d5e6f1;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     html {
       scroll-behavior: smooth;
@@ -37,10 +30,7 @@
       font: 16px/1.6 Arial, sans-serif;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
     .wrap {
       width: min(1120px, 90%);
@@ -68,30 +58,27 @@
       font-size: 22px;
       font-weight: 800;
       letter-spacing: -0.5px;
+      white-space: nowrap;
     }
 
-    .logo-rf {
-      color: #000;
-    }
-
-    .logo-vdopuske {
-      color: var(--accent);
-    }
+    .logo-rf { color: #000; }
+    .logo-vdopuske { color: var(--accent); }
 
     .nav-links {
       display: flex;
-      gap: 26px;
+      gap: 22px;
       color: var(--muted);
       font-size: 14px;
     }
 
-    .nav-links a {
-      transition: color 0.2s ease;
+    .nav-links a,
+    .button,
+    .card a {
+      transition: 0.2s ease;
     }
 
-    .nav-links a:hover {
-      color: var(--accent);
-    }
+    .nav-links a:hover,
+    .card a:hover { color: var(--accent); }
 
     .button {
       display: inline-flex;
@@ -104,10 +91,6 @@
       color: #fff;
       font-weight: 700;
       cursor: pointer;
-      transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        box-shadow 0.2s ease;
     }
 
     .button:hover {
@@ -124,14 +107,13 @@
 
     .button-outline:hover {
       background: #e7f3fa;
-      box-shadow: 0 10px 28px rgba(42, 94, 128, 0.1);
+      color: var(--text);
     }
 
     .hero {
       position: relative;
       isolation: isolate;
       padding: 100px 0 90px;
-      perspective: 1000px;
     }
 
     .hero::before {
@@ -145,9 +127,7 @@
       pointer-events: none;
       border: 1px solid rgba(22, 139, 210, 0.22);
       border-radius: 50%;
-      box-shadow:
-        inset 0 0 50px rgba(22, 139, 210, 0.06),
-        0 0 70px rgba(22, 139, 210, 0.08);
+      box-shadow: inset 0 0 50px rgba(22, 139, 210, 0.06);
       animation: orbit 12s linear infinite;
     }
 
@@ -158,9 +138,7 @@
       right: 4%;
       width: 280px;
       height: 280px;
-      display: block;
       object-fit: cover;
-      object-position: center;
       pointer-events: none;
       border-radius: 50%;
       box-shadow: 20px 25px 55px rgba(35, 91, 128, 0.2);
@@ -183,7 +161,7 @@
       animation: rise-in 0.8s both;
     }
 
-    .hero p {
+    .hero > p {
       max-width: 610px;
       color: var(--muted);
       font-size: 19px;
@@ -202,7 +180,6 @@
       margin-top: 48px;
       color: #71899d;
       font-size: 13px;
-      animation: rise-in 0.8s 0.36s both;
     }
 
     section {
@@ -222,90 +199,43 @@
     }
 
     .section-heading p,
-    .card p {
-      color: var(--muted);
-    }
+    .card p { color: var(--muted); }
 
     .cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
-      perspective: 1000px;
     }
 
     .card {
-      position: relative;
-      min-height: 260px;
+      min-height: 240px;
       padding: 26px;
-      overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 14px;
       background: linear-gradient(145deg, #fff, #edf6fb);
-      transform-style: preserve-3d;
-      transition:
-        transform 0.35s ease,
-        border-color 0.35s ease,
-        box-shadow 0.35s ease;
-      animation: card-in 0.7s both;
-    }
-
-    .card:nth-child(2) {
-      animation-delay: 0.12s;
-    }
-
-    .card:nth-child(3) {
-      animation-delay: 0.24s;
-    }
-
-    .card::before {
-      position: absolute;
-      inset: 0;
-      content: "";
-      pointer-events: none;
-      opacity: 0;
-      background: radial-gradient(
-        circle at 50% 0,
-        rgba(22, 139, 210, 0.12),
-        transparent 65%
-      );
-      transition: opacity 0.35s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .card:hover {
-      transform: translateY(-8px) rotateX(3deg) rotateY(-3deg);
-      border-color: rgba(22, 139, 210, 0.4);
-      box-shadow: 0 22px 45px rgba(42, 94, 128, 0.12);
-    }
-
-    .card:hover::before {
-      opacity: 1;
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(42, 94, 128, 0.12);
     }
 
     .icon {
       display: inline-flex;
       width: 52px;
       height: 52px;
-      align-items: center;
-      justify-content: center;
-      transform: translateZ(25px);
-      transition: transform 0.35s ease;
     }
 
     .icon img {
-      display: block;
       width: 100%;
       height: 100%;
       object-fit: contain;
     }
 
-    .card:hover .icon {
-      transform: translateZ(40px) rotate(-8deg) scale(1.12);
-    }
-
     .card h3 {
       margin: 18px 0 8px;
       font-size: 22px;
-      transform: translateZ(15px);
     }
 
     .card a {
@@ -313,11 +243,6 @@
       margin-top: 12px;
       color: var(--accent);
       font-weight: 700;
-      transition: transform 0.2s ease;
-    }
-
-    .card a:hover {
-      transform: translateX(5px);
     }
 
     .materials-note {
@@ -329,21 +254,103 @@
       color: var(--muted);
     }
 
+    .calculator {
+      display: grid;
+      grid-template-columns: 1fr 0.85fr;
+      gap: 28px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: linear-gradient(135deg, #fff, #eaf5fb);
+      box-shadow: 0 20px 55px rgba(42, 94, 128, 0.1);
+    }
+
+    .calculator-fields {
+      display: grid;
+      gap: 18px;
+      align-content: start;
+    }
+
+    .calculator-field label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: 700;
+    }
+
+    .calculator-field input,
+    .calculator-field select {
+      width: 100%;
+      min-height: 50px;
+      padding: 12px 14px;
+      border: 1px solid #c8dce9;
+      border-radius: 9px;
+      outline: none;
+      background: #fff;
+      color: var(--text);
+      font: inherit;
+    }
+
+    .calculator-field input:focus,
+    .calculator-field select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(22, 139, 210, 0.12);
+    }
+
+    .calculator-field [aria-invalid="true"] { border-color: #c43c35; }
+
+    .calculator-result {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 230px;
+      padding: 26px;
+      border-radius: 14px;
+      background: #17324a;
+      color: #fff;
+    }
+
+    .calculator-result-label {
+      color: #c4d9e8;
+      font-size: 14px;
+    }
+
+    .calculator-price {
+      display: block;
+      margin: 8px 0 12px;
+      color: #fff;
+      font-size: clamp(34px, 5vw, 48px);
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .calculator-result > p {
+      margin: 0;
+      color: #d3e3ee;
+      font-size: 14px;
+    }
+
+    .calculator-error {
+      min-height: 22px;
+      margin: 0;
+      color: #b42318;
+      font-size: 14px;
+    }
+
+    .calculator-disclaimer {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
     .steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
-      perspective: 800px;
     }
 
     .step {
       padding: 20px 0;
       border-top: 1px solid #c8dce9;
-      transition: transform 0.3s ease;
-    }
-
-    .step:hover {
-      transform: translateY(-5px);
     }
 
     .step b {
@@ -351,13 +358,8 @@
       font-size: 14px;
     }
 
-    .step h3 {
-      margin: 8px 0;
-    }
-
-    .step p {
-      color: var(--muted);
-    }
+    .step h3 { margin: 8px 0; }
+    .step p { color: var(--muted); }
 
     .contact-box {
       display: flex;
@@ -369,14 +371,6 @@
       border-radius: 16px;
       background: linear-gradient(135deg, #fff, #eaf5fb);
       box-shadow: 0 20px 55px rgba(42, 94, 128, 0.1);
-      transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease;
-    }
-
-    .contact-box:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 28px 65px rgba(42, 94, 128, 0.16);
     }
 
     .contact-box p {
@@ -396,9 +390,7 @@
       overflow-wrap: anywhere;
     }
 
-    .contact-details a:hover {
-      text-decoration: underline;
-    }
+    .contact-details a:hover { text-decoration: underline; }
 
     .contact-actions {
       display: flex;
@@ -419,77 +411,38 @@
     }
 
     @keyframes float {
-      0%,
-      100% {
-        transform: translateY(0) scale(1.15) rotate(0deg);
-      }
-
-      50% {
-        transform: translateY(-18px) scale(1.15) rotate(8deg);
-      }
+      0%, 100% { transform: translateY(0) scale(1.15) rotate(0deg); }
+      50% { transform: translateY(-18px) scale(1.15) rotate(8deg); }
     }
 
     @keyframes orbit {
-      from {
-        transform: rotate(0deg) scale(1);
-      }
-
-      to {
-        transform: rotate(360deg) scale(1);
-      }
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
     @keyframes rise-in {
-      from {
-        opacity: 0;
-        transform: translateY(18px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes card-in {
-      from {
-        opacity: 0;
-        transform: translateY(20px) rotateX(8deg);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0) rotateX(0);
-      }
+    @media (max-width: 900px) {
+      .nav-links { gap: 14px; font-size: 13px; }
     }
 
     @media (max-width: 760px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        padding: 72px 0;
-      }
-
+      .nav-links { display: none; }
+      .hero { padding: 72px 0; }
       .hero-video,
-      .hero::before {
-        display: none;
-      }
+      .hero::before { display: none; }
 
       .cards,
-      .steps {
-        grid-template-columns: 1fr;
-      }
+      .steps,
+      .calculator { grid-template-columns: 1fr; }
 
-      .contact-box {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      footer .wrap {
-        flex-direction: column;
-      }
+      .calculator { padding: 20px; }
+      .calculator-result { min-height: 190px; }
+      .contact-box { align-items: flex-start; flex-direction: column; }
+      footer .wrap { flex-direction: column; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -514,6 +467,7 @@
 
       <div class="nav-links">
         <a href="#services">Услуги</a>
+        <a href="#calculator">Калькулятор</a>
         <a href="#materials">Материалы</a>
         <a href="#process">Как работаем</a>
         <a href="#contacts">Контакты</a>
@@ -527,13 +481,10 @@
     <div class="wrap hero">
       <video class="hero-video" autoplay muted loop playsinline aria-hidden="true">
         <source src="images/hero-video.mp4" type="video/mp4">
-        Ваш браузер не поддерживает видео.
       </video>
 
       <div class="eyebrow">3D-технологии для ваших идей</div>
-
       <h1>От цифровой модели — к реальному объекту.</h1>
-
       <p>
         Помогаем создавать детали и изделия: проектируем 3D-модели,
         сканируем существующие объекты и печатаем готовые решения.
@@ -567,10 +518,10 @@
             </div>
             <h3>3D-печать</h3>
             <p>
-              Изготовление прототипов, деталей и небольших серий. Поможем
-              выбрать материал и технологию под условия эксплуатации.
+              Изготовление прототипов, деталей и небольших серий.
+              Поможем выбрать материал и технологию.
             </p>
-            <a href="#contacts">Заказать печать →</a>
+            <a href="#calculator">Рассчитать печать →</a>
           </article>
 
           <article class="card">
@@ -580,7 +531,7 @@
             <h3>3D-моделирование</h3>
             <p>
               Создание модели по чертежу, эскизу, образцу или описанию.
-              Подготовим файл для производства и дальнейших изменений.
+              Подготовим файл для производства.
             </p>
             <a href="#contacts">Обсудить модель →</a>
           </article>
@@ -600,29 +551,97 @@
       </div>
     </section>
 
+    <section id="calculator">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="eyebrow">Предварительный расчёт</div>
+          <h2>Рассчитайте стоимость 3D-печати</h2>
+          <p>
+            Укажите материал, вес детали и время печати, чтобы узнать
+            предварительную стоимость заказа.
+          </p>
+        </div>
+
+        <div class="calculator">
+          <div class="calculator-fields">
+            <div class="calculator-field">
+              <label for="print-material">Материал</label>
+              <select id="print-material">
+                <option value="pla">PLA — около 1,43 ₽/г</option>
+                <option value="petg">PETG — около 1,40 ₽/г</option>
+                <option value="abs">ABS — около 1,31 ₽/г</option>
+                <option value="asa">ASA — около 1,90 ₽/г</option>
+                <option value="tpu">TPU — около 2,50 ₽/г</option>
+                <option value="nylon">Нейлон (PA) — около 3,50 ₽/г</option>
+                <option value="composite">Композитный пластик — от 2,55 ₽/г</option>
+                <option value="pva">PVA — около 7,50 ₽/г</option>
+                <option value="hips">HIPS — около 0,80 ₽/г</option>
+              </select>
+            </div>
+
+            <div class="calculator-field">
+              <label for="print-weight">Вес модели, г</label>
+              <input
+                id="print-weight"
+                type="number"
+                min="0"
+                step="1"
+                inputmode="decimal"
+                placeholder="Например, 120"
+              >
+            </div>
+
+            <div class="calculator-field">
+              <label for="print-hours">Время печати, часов</label>
+              <input
+                id="print-hours"
+                type="number"
+                min="0"
+                step="0.1"
+                inputmode="decimal"
+                placeholder="Например, 5.5"
+              >
+            </div>
+
+            <p id="calculator-error" class="calculator-error" aria-live="polite"></p>
+          </div>
+
+          <div class="calculator-result" aria-live="polite">
+            <span class="calculator-result-label">Предварительная стоимость</span>
+            <output id="print-result" class="calculator-price">от 500 ₽</output>
+            <p>Минимальная стоимость заказа — 500 ₽</p>
+          </div>
+        </div>
+
+        <p class="calculator-disclaimer">
+          Расчёт предварительный. Итоговая стоимость может измениться после
+          проверки модели, настроек печати и требований к качеству.
+        </p>
+      </div>
+    </section>
+
     <section id="materials">
       <div class="wrap">
         <div class="section-heading">
           <div class="eyebrow">Материалы для 3D-печати</div>
           <h2>Подберём пластик под вашу задачу</h2>
           <p>
-            Выбор материала зависит от нагрузки, температуры, гибкости
-            и условий эксплуатации изделия.
+            Цены указаны как ориентир за грамм филамента. Они могут отличаться
+            в зависимости от производителя и характеристик материала.
           </p>
         </div>
 
         <div class="cards">
           <article class="card">
-            <h3>PLA</h3>
+            <h3>PLA · около 1,43 ₽/г</h3>
             <p>
-              Легко печатается и почти не деформируется. Подходит для
-              макетов и декоративных изделий, но может быть хрупким
-              и размягчаться при нагреве.
+              Легко печатается и почти не деформируется. Подходит для макетов
+              и декоративных изделий, но может размягчаться при нагреве.
             </p>
           </article>
 
           <article class="card">
-            <h3>PETG</h3>
+            <h3>PETG · около 1,40 ₽/г</h3>
             <p>
               Прочный, ударостойкий и устойчивый к влаге. Используется
               для корпусов, креплений и бытовых деталей.
@@ -630,61 +649,58 @@
           </article>
 
           <article class="card">
-            <h3>ABS</h3>
+            <h3>ABS · около 1,31 ₽/г</h3>
             <p>
-              Прочный и термостойкий материал. Склонен к усадке,
-              поэтому для печати обычно нужна закрытая камера.
+              Прочный и термостойкий материал. Склонен к усадке, поэтому
+              для печати обычно нужна закрытая камера.
             </p>
           </article>
 
           <article class="card">
-            <h3>ASA</h3>
+            <h3>ASA · около 1,90 ₽/г</h3>
             <p>
-              Похож на ABS, но лучше переносит ультрафиолет и погодные
-              условия. Подходит для деталей, используемых на улице.
+              Похож на ABS, но лучше переносит ультрафиолет и погодные условия.
+              Подходит для деталей, используемых на улице.
             </p>
           </article>
 
           <article class="card">
-            <h3>TPU</h3>
+            <h3>TPU · около 2,50 ₽/г</h3>
             <p>
-              Гибкий, эластичный и износостойкий материал. Подходит
-              для прокладок, чехлов, ремешков и упругих деталей.
+              Гибкий, эластичный и износостойкий материал для прокладок,
+              чехлов и упругих деталей.
             </p>
           </article>
 
           <article class="card">
-            <h3>Нейлон (PA)</h3>
+            <h3>Нейлон (PA) · около 3,50 ₽/г</h3>
             <p>
-              Прочный, износостойкий и немного гибкий. Используется
-              для шестерён, шарниров и нагруженных деталей. Впитывает
-              влагу и требует сухого хранения.
+              Прочный и износостойкий материал для шестерён, шарниров
+              и нагруженных деталей. Требует сухого хранения.
             </p>
           </article>
 
           <article class="card">
             <h3>PVA и HIPS</h3>
             <p>
-              Материалы для растворимых поддержек при печати сложных
-              моделей. PVA растворяется в воде, HIPS — в подходящем
-              растворителе.
+              PVA — около 7,50 ₽/г; HIPS — около 0,80 ₽/г.
+              Эти материалы могут применяться для печати поддержек.
             </p>
           </article>
 
           <article class="card">
-            <h3>Композитные пластики</h3>
+            <h3>Композитные пластики · от 2,55 ₽/г</h3>
             <p>
-              Содержат добавки углеволокна, стекловолокна, дерева
-              или металла. Свойства зависят от наполнителя; некоторым
-              материалам требуется износостойкое сопло.
+              Пластики с добавками углеволокна, стекловолокна, дерева
+              или металла. Некоторым типам требуется износостойкое сопло.
             </p>
           </article>
         </div>
 
         <p class="materials-note">
           Для большинства простых изделий подойдёт PLA; для более прочных
-          и влагостойких деталей — PETG; для гибких — TPU. Свойства зависят
-          от производителя материала и настроек печати.
+          и влагостойких деталей — PETG; для гибких — TPU. Цена материала
+          учитывается в итоговом расчёте автоматически.
         </p>
       </div>
     </section>
@@ -700,26 +716,19 @@
           <div class="step">
             <b>01 / Заявка</b>
             <h3>Расскажите о задаче</h3>
-            <p>
-              Пришлите описание, чертёж, фото или файл — подскажем,
-              что потребуется.
-            </p>
+            <p>Пришлите описание, чертёж, фото или файл.</p>
           </div>
 
           <div class="step">
             <b>02 / Расчёт</b>
             <h3>Согласуем решение</h3>
-            <p>
-              Обсудим технологию, сроки и стоимость до начала работ.
-            </p>
+            <p>Обсудим технологию, сроки и стоимость до начала работ.</p>
           </div>
 
           <div class="step">
             <b>03 / Результат</b>
             <h3>Изготовим и передадим</h3>
-            <p>
-              Выполним заказ и согласуем удобный способ получения.
-            </p>
+            <p>Выполним заказ и согласуем удобный способ получения.</p>
           </div>
         </div>
       </div>
@@ -731,21 +740,13 @@
           <div class="eyebrow">Связаться с нами</div>
           <h2>Нужна 3D-печать?</h2>
           <p>
-            Пришлите описание задачи, фото или STL-файл — обсудим
-            материалы, сроки и стоимость. Файлы можно приложить
-            к письму после нажатия на кнопку.
+            Пришлите описание задачи, фото или STL-файл — обсудим материалы,
+            сроки и стоимость. Файлы можно приложить к письму.
           </p>
 
           <div class="contact-details">
-            <a href="mailto:rfvdopuske@mail.ru">
-              Почта: rfvdopuske@mail.ru
-            </a>
-
-            <a
-              href="https://t.me/reiterfost"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="mailto:rfvdopuske@mail.ru">Почта: rfvdopuske@mail.ru</a>
+            <a href="https://t.me/reiterfost" target="_blank" rel="noopener noreferrer">
               Telegram: @reiterfost
             </a>
           </div>
@@ -754,7 +755,7 @@
         <div class="contact-actions">
           <a
             class="button"
-            href="mailto:rfvdopuske@mail.ru?subject=%D0%97%D0%B0%D0%BF%D1%80%D0%BE%D1%81%20%D0%BD%D0%B0%203D-%D0%BF%D0%B5%D1%87%D0%B0%D1%82%D1%8C&body=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%0A%0A%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%20%D0%B8%20%D1%81%D1%80%D0%BE%D0%BA%D0%B8.%0A%0A%D0%9E%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B8%3A"
+            href="mailto:rfvdopuske@mail.ru?subject=%D0%97%D0%B0%D0%BF%D1%80%D0%BE%D1%81%20%D0%BD%D0%B0%203D-%D0%BF%D0%B5%D1%87%D0%B0%D1%82%D1%8C"
           >
             Отправить запрос по почте
           </a>
@@ -778,6 +779,95 @@
       <span>3D-печать · 3D-моделирование · 3D-сканирование</span>
     </div>
   </footer>
+
+  <script>
+    (() => {
+      // Внутренние ориентировочные цены филамента в рублях за грамм.
+      const MATERIAL_PRICES = {
+        pla: 1.43,
+        petg: 1.40,
+        abs: 1.31,
+        asa: 1.90,
+        tpu: 2.50,
+        nylon: 3.50,
+        composite: 2.55,
+        pva: 7.50,
+        hips: 0.80
+      };
+
+      const PRINT_PRICE_PER_HOUR = 30;
+      const ELECTRICITY_PRICE_PER_HOUR = 7;
+      const MARKUP_PERCENT = 100;
+      const MINIMUM_PRICE = 500;
+
+      const materialInput = document.getElementById("print-material");
+      const weightInput = document.getElementById("print-weight");
+      const hoursInput = document.getElementById("print-hours");
+      const result = document.getElementById("print-result");
+      const error = document.getElementById("calculator-error");
+
+      const formatRubles = (amount) =>
+        new Intl.NumberFormat("ru-RU", {
+          maximumFractionDigits: 0
+        }).format(amount) + " ₽";
+
+      function resetCalculator(message = "") {
+        result.textContent = "от 500 ₽";
+        error.textContent = message;
+      }
+
+      function calculatePrice() {
+        const weightValue = weightInput.value.trim();
+        const hoursValue = hoursInput.value.trim();
+
+        weightInput.setAttribute("aria-invalid", "false");
+        hoursInput.setAttribute("aria-invalid", "false");
+
+        if (!weightValue || !hoursValue) {
+          resetCalculator();
+          return;
+        }
+
+        const weight = Number(weightValue);
+        const hours = Number(hoursValue);
+
+        if (!Number.isFinite(weight) || weight <= 0) {
+          weightInput.setAttribute("aria-invalid", "true");
+          resetCalculator("Укажите вес модели больше нуля.");
+          return;
+        }
+
+        if (!Number.isFinite(hours) || hours <= 0) {
+          hoursInput.setAttribute("aria-invalid", "true");
+          resetCalculator("Укажите время печати больше нуля.");
+          return;
+        }
+
+        const pricePerGram = MATERIAL_PRICES[materialInput.value];
+
+        if (typeof pricePerGram !== "number") {
+          resetCalculator("Не удалось определить выбранный материал.");
+          return;
+        }
+
+        const materialCost = weight * pricePerGram;
+        const printingCost = hours * PRINT_PRICE_PER_HOUR;
+        const electricityCost = hours * ELECTRICITY_PRICE_PER_HOUR;
+
+        const baseCost = materialCost + printingCost + electricityCost;
+        const finalPrice = Math.max(
+          MINIMUM_PRICE,
+          Math.ceil(baseCost * (1 + MARKUP_PERCENT / 100))
+        );
+
+        error.textContent = "";
+        result.textContent = formatRubles(finalPrice);
+      }
+
+      materialInput.addEventListener("change", calculatePrice);
+      weightInput.addEventListener("input", calculatePrice);
+      hoursInput.addEventListener("input", calculatePrice);
+    })();
+  </script>
 </body>
 </html>
-```
