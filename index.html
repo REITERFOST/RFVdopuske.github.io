@@ -30,7 +30,10 @@
       font: 16px/1.6 Arial, sans-serif;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     .wrap {
       width: min(1120px, 90%);
@@ -78,7 +81,9 @@
     }
 
     .nav-links a:hover,
-    .card a:hover { color: var(--accent); }
+    .card a:hover {
+      color: var(--accent);
+    }
 
     .button {
       display: inline-flex;
@@ -199,7 +204,9 @@
     }
 
     .section-heading p,
-    .card p { color: var(--muted); }
+    .card p {
+      color: var(--muted);
+    }
 
     .cards {
       display: grid;
@@ -296,7 +303,9 @@
       box-shadow: 0 0 0 4px rgba(22, 139, 210, 0.12);
     }
 
-    .calculator-field [aria-invalid="true"] { border-color: #c43c35; }
+    .calculator-field [aria-invalid="true"] {
+      border-color: #c43c35;
+    }
 
     .calculator-result {
       display: flex;
@@ -426,22 +435,35 @@
     }
 
     @media (max-width: 900px) {
-      .nav-links { gap: 14px; font-size: 13px; }
+      .nav-links {
+        gap: 14px;
+        font-size: 13px;
+      }
     }
 
     @media (max-width: 760px) {
       .nav-links { display: none; }
       .hero { padding: 72px 0; }
+
       .hero-video,
-      .hero::before { display: none; }
+      .hero::before {
+        display: none;
+      }
 
       .cards,
       .steps,
-      .calculator { grid-template-columns: 1fr; }
+      .calculator {
+        grid-template-columns: 1fr;
+      }
 
       .calculator { padding: 20px; }
       .calculator-result { min-height: 190px; }
-      .contact-box { align-items: flex-start; flex-direction: column; }
+
+      .contact-box {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
       footer .wrap { flex-direction: column; }
     }
 
@@ -557,7 +579,7 @@
           <div class="eyebrow">Предварительный расчёт</div>
           <h2>Рассчитайте стоимость 3D-печати</h2>
           <p>
-            Укажите материал, вес детали и время печати, чтобы узнать
+            Выберите материал и укажите вес детали, чтобы узнать
             предварительную стоимость заказа.
           </p>
         </div>
@@ -567,15 +589,13 @@
             <div class="calculator-field">
               <label for="print-material">Материал</label>
               <select id="print-material">
-                <option value="pla">PLA — около 1,43 ₽/г</option>
-                <option value="petg">PETG — около 1,40 ₽/г</option>
-                <option value="abs">ABS — около 1,31 ₽/г</option>
-                <option value="asa">ASA — около 1,90 ₽/г</option>
-                <option value="tpu">TPU — около 2,50 ₽/г</option>
-                <option value="nylon">Нейлон (PA) — около 3,50 ₽/г</option>
-                <option value="composite">Композитный пластик — от 2,55 ₽/г</option>
-                <option value="pva">PVA — около 7,50 ₽/г</option>
-                <option value="hips">HIPS — около 0,80 ₽/г</option>
+                <option value="pla">PLA — 8 ₽/г</option>
+                <option value="petg">PETG — 9 ₽/г</option>
+                <option value="abs">ABS — 12 ₽/г</option>
+                <option value="asa">ASA — 15 ₽/г</option>
+                <option value="tpu">TPU — 20 ₽/г</option>
+                <option value="nylon">Нейлон (PA) — 35 ₽/г</option>
+                <option value="composite">Композитный пластик — 40 ₽/г</option>
               </select>
             </div>
 
@@ -584,22 +604,11 @@
               <input
                 id="print-weight"
                 type="number"
-                min="0"
-                step="1"
-                inputmode="decimal"
-                placeholder="Например, 120"
-              >
-            </div>
-
-            <div class="calculator-field">
-              <label for="print-hours">Время печати, часов</label>
-              <input
-                id="print-hours"
-                type="number"
-                min="0"
+                min="0.1"
                 step="0.1"
                 inputmode="decimal"
-                placeholder="Например, 5.5"
+                placeholder="Например, 120"
+                aria-describedby="calculator-error"
               >
             </div>
 
@@ -626,14 +635,14 @@
           <div class="eyebrow">Материалы для 3D-печати</div>
           <h2>Подберём пластик под вашу задачу</h2>
           <p>
-            Цены указаны как ориентир за грамм филамента. Они могут отличаться
-            в зависимости от производителя и характеристик материала.
+            Стоимость печати рассчитывается по весу модели и выбранному материалу.
+            Итоговую цену подтвердим после проверки файла.
           </p>
         </div>
 
         <div class="cards">
           <article class="card">
-            <h3>PLA · около 1,43 ₽/г</h3>
+            <h3>PLA</h3>
             <p>
               Легко печатается и почти не деформируется. Подходит для макетов
               и декоративных изделий, но может размягчаться при нагреве.
@@ -641,7 +650,7 @@
           </article>
 
           <article class="card">
-            <h3>PETG · около 1,40 ₽/г</h3>
+            <h3>PETG</h3>
             <p>
               Прочный, ударостойкий и устойчивый к влаге. Используется
               для корпусов, креплений и бытовых деталей.
@@ -649,7 +658,7 @@
           </article>
 
           <article class="card">
-            <h3>ABS · около 1,31 ₽/г</h3>
+            <h3>ABS</h3>
             <p>
               Прочный и термостойкий материал. Склонен к усадке, поэтому
               для печати обычно нужна закрытая камера.
@@ -657,7 +666,7 @@
           </article>
 
           <article class="card">
-            <h3>ASA · около 1,90 ₽/г</h3>
+            <h3>ASA</h3>
             <p>
               Похож на ABS, но лучше переносит ультрафиолет и погодные условия.
               Подходит для деталей, используемых на улице.
@@ -665,7 +674,7 @@
           </article>
 
           <article class="card">
-            <h3>TPU · около 2,50 ₽/г</h3>
+            <h3>TPU</h3>
             <p>
               Гибкий, эластичный и износостойкий материал для прокладок,
               чехлов и упругих деталей.
@@ -673,7 +682,7 @@
           </article>
 
           <article class="card">
-            <h3>Нейлон (PA) · около 3,50 ₽/г</h3>
+            <h3>Нейлон (PA)</h3>
             <p>
               Прочный и износостойкий материал для шестерён, шарниров
               и нагруженных деталей. Требует сухого хранения.
@@ -681,15 +690,7 @@
           </article>
 
           <article class="card">
-            <h3>PVA и HIPS</h3>
-            <p>
-              PVA — около 7,50 ₽/г; HIPS — около 0,80 ₽/г.
-              Эти материалы могут применяться для печати поддержек.
-            </p>
-          </article>
-
-          <article class="card">
-            <h3>Композитные пластики · от 2,55 ₽/г</h3>
+            <h3>Композитные пластики</h3>
             <p>
               Пластики с добавками углеволокна, стекловолокна, дерева
               или металла. Некоторым типам требуется износостойкое сопло.
@@ -699,8 +700,8 @@
 
         <p class="materials-note">
           Для большинства простых изделий подойдёт PLA; для более прочных
-          и влагостойких деталей — PETG; для гибких — TPU. Цена материала
-          учитывается в итоговом расчёте автоматически.
+          и влагостойких деталей — PETG; для гибких — TPU. Выберите материал
+          и введите вес модели в калькуляторе выше.
         </p>
       </div>
     </section>
@@ -782,27 +783,20 @@
 
   <script>
     (() => {
-      // Внутренние ориентировочные цены филамента в рублях за грамм.
       const MATERIAL_PRICES = {
-        pla: 1.43,
-        petg: 1.40,
-        abs: 1.31,
-        asa: 1.90,
-        tpu: 2.50,
-        nylon: 3.50,
-        composite: 2.55,
-        pva: 7.50,
-        hips: 0.80
+        pla: 8,
+        petg: 9,
+        abs: 12,
+        asa: 15,
+        tpu: 20,
+        nylon: 35,
+        composite: 40
       };
 
-      const PRINT_PRICE_PER_HOUR = 30;
-      const ELECTRICITY_PRICE_PER_HOUR = 7;
-      const MARKUP_PERCENT = 100;
       const MINIMUM_PRICE = 500;
 
       const materialInput = document.getElementById("print-material");
       const weightInput = document.getElementById("print-weight");
-      const hoursInput = document.getElementById("print-hours");
       const result = document.getElementById("print-result");
       const error = document.getElementById("calculator-error");
 
@@ -811,62 +805,43 @@
           maximumFractionDigits: 0
         }).format(amount) + " ₽";
 
-      function resetCalculator(message = "") {
-        result.textContent = "от 500 ₽";
-        error.textContent = message;
-      }
-
       function calculatePrice() {
-        const weightValue = weightInput.value.trim();
-        const hoursValue = hoursInput.value.trim();
-
+        const weightText = weightInput.value.trim();
         weightInput.setAttribute("aria-invalid", "false");
-        hoursInput.setAttribute("aria-invalid", "false");
+        error.textContent = "";
 
-        if (!weightValue || !hoursValue) {
-          resetCalculator();
+        if (weightText === "") {
+          result.textContent = "от 500 ₽";
           return;
         }
 
-        const weight = Number(weightValue);
-        const hours = Number(hoursValue);
+        const weight = Number(weightText);
 
         if (!Number.isFinite(weight) || weight <= 0) {
+          result.textContent = "от 500 ₽";
+          error.textContent = "Введите вес модели больше нуля.";
           weightInput.setAttribute("aria-invalid", "true");
-          resetCalculator("Укажите вес модели больше нуля.");
-          return;
-        }
-
-        if (!Number.isFinite(hours) || hours <= 0) {
-          hoursInput.setAttribute("aria-invalid", "true");
-          resetCalculator("Укажите время печати больше нуля.");
           return;
         }
 
         const pricePerGram = MATERIAL_PRICES[materialInput.value];
 
         if (typeof pricePerGram !== "number") {
-          resetCalculator("Не удалось определить выбранный материал.");
+          result.textContent = "от 500 ₽";
+          error.textContent = "Не удалось определить цену материала.";
           return;
         }
 
-        const materialCost = weight * pricePerGram;
-        const printingCost = hours * PRINT_PRICE_PER_HOUR;
-        const electricityCost = hours * ELECTRICITY_PRICE_PER_HOUR;
+        const calculatedPrice = Math.ceil(weight * pricePerGram);
+        const finalPrice = Math.max(MINIMUM_PRICE, calculatedPrice);
 
-        const baseCost = materialCost + printingCost + electricityCost;
-        const finalPrice = Math.max(
-          MINIMUM_PRICE,
-          Math.ceil(baseCost * (1 + MARKUP_PERCENT / 100))
-        );
-
-        error.textContent = "";
         result.textContent = formatRubles(finalPrice);
       }
 
       materialInput.addEventListener("change", calculatePrice);
       weightInput.addEventListener("input", calculatePrice);
-      hoursInput.addEventListener("input", calculatePrice);
+
+      calculatePrice();
     })();
   </script>
 </body>
